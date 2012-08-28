@@ -73,3 +73,6 @@ var popupMenuSettings = {
     ]
 };
 ```
+
+jsfiddle example (not working right for some reason):
+http://jsfiddle.net/jCtQ2/
