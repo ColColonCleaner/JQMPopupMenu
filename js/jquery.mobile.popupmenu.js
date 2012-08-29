@@ -9,7 +9,7 @@
      * This function creates a menu centered on the target element.
      * The CSS for the menu can be found in jquery.mobile.popupmenu.css
      */
-    $.fn.popupMenu = function (popupMenuSettings) {
+    $.fn.bindPopupMenu = function (popupMenuSettings) {
         //remove all previous popupMenus from the DOM
         $('#popupMenuMain').remove();
         //import settings
@@ -60,7 +60,7 @@
             //create the list buttons and add them to the inner rectangle
             var menuListElement = $('<li>')
                 //attributes of this list element
-                .attr('id', element.buttonID)
+                .attr('id', element.buttonID )
                 //css properties of this list element
                 .css('height', (height / optionsToDisplay) + "px")
                 .css('line-height', (height / optionsToDisplay) + "px")
@@ -98,9 +98,11 @@
                 popupafterclose:popupMenuSettings.onClose,
                 popupafteropen:popupMenuSettings.onOpen
             });
-        $('#popupMenuMain').popup('open', {
-            positionTo:targetEl,
-            transition:"pop"
+        targetEl.click(function(){
+            $('#popupMenuMain').popup('open', {
+                positionTo:targetEl,
+                transition:"pop"
+            });
         });
-    }//end popupMenu()
+    }//end bindPopupMenu()
 })(jQuery);
