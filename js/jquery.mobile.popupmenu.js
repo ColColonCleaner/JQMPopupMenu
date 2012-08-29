@@ -10,6 +10,7 @@
      * The CSS for the menu can be found in jquery.mobile.popupmenu.css
      */
     $.fn.bindPopupMenu = function (popupMenuSettings) {
+        alert("hello");
         //remove all previous popupMenus from the DOM
         $('#popupMenuMain').remove();
         //import settings
