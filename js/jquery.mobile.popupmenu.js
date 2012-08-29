@@ -6,11 +6,21 @@
 ;
 (function ($) {
     /**
-     * This function creates a menu centered on the target element.
+     * This function creates a menu centered on the target element on click.
      * The CSS for the menu can be found in jquery.mobile.popupmenu.css
      */
     $.fn.bindPopupMenu = function (popupMenuSettings) {
-        alert("hello");
+        $(this).click(function(){
+            createMenu(this, popupMenuSettings);
+        });
+    }//end bindPopupMenu()
+
+    /**
+     * Creates a menu centered on the element, using the popup menu settings
+     * @param element - element to which the popup menu will be aligned
+     * @param popupMenuSettings - JSON object specifying settings for the popup menu
+     */
+    function createMenu(element, popupMenuSettings) {
         //remove all previous popupMenus from the DOM
         $('#popupMenuMain').remove();
         //import settings
@@ -19,7 +29,7 @@
         var margins = popupMenuSettings.formatting.margins;
         //convert to float, avoid integer division
         var optionsToDisplay = popupMenuSettings.formatting.optionsToDisplay + 0.0;
-        var targetEl = $(this);
+        var targetEl = $(element);
 
         //set up the inner rectangle which will hold the buttons, padding will push the back background around it by 10 pixels
         var popupMenuOuter = $('<div>')
@@ -61,7 +71,7 @@
             //create the list buttons and add them to the inner rectangle
             var menuListElement = $('<li>')
                 //attributes of this list element
-                .attr('id', element.buttonID )
+                .attr('id', element.buttonID)
                 //css properties of this list element
                 .css('height', (height / optionsToDisplay) + "px")
                 .css('line-height', (height / optionsToDisplay) + "px")
@@ -99,11 +109,9 @@
                 popupafterclose:popupMenuSettings.onClose,
                 popupafteropen:popupMenuSettings.onOpen
             });
-        targetEl.click(function(){
-            $('#popupMenuMain').popup('open', {
-                positionTo:targetEl,
-                transition:"pop"
-            });
+        $('#popupMenuMain').popup('open', {
+            positionTo:targetEl,
+            transition:"pop"
         });
-    }//end bindPopupMenu()
+    }
 })(jQuery);
