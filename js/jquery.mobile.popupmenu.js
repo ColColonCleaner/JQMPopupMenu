@@ -68,6 +68,12 @@
 
         var totalElements = 0;
         $.each(popupMenuSettings.elementList, function (index, element) {
+            //check to see if this id is already used in the web app
+            if($("#"+element.buttonID).length>0)
+            {
+                console.log("Unable to create button '" + element.buttonID + "' in Popup Menu. Element already exists, use a different ID.");
+                return;
+            }
             //create the list buttons and add them to the inner rectangle
             var menuListElement = $('<li>')
                 //attributes of this list element
