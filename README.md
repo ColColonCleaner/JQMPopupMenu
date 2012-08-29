@@ -5,6 +5,9 @@ Dynamic Jquery Mobile Popup Menu
 
 Using jquery mobile 1.2 alpha's new popup menu API, I created a menu generator based entirely in javascript and CSS, designed to create and show a menu without the need to write any HTML code.
 
+jsfiddle example (fiddle not working right now for some reason, dependancies non functional):
+http://jsfiddle.net/jCtQ2/3/
+
 # Initialization
 
 The plugin can be called in this format:
@@ -73,6 +76,3 @@ var popupMenuSettings = {
     ]
 };
 ```
-
-jsfiddle example (not working right for some reason):
-http://jsfiddle.net/jCtQ2/
